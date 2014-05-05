@@ -1,11 +1,11 @@
-[![NodeJS](img/nodejs-light.png)](http://www.meetup.com/nodejs/)
+[![EmpireJS](img/empirejs_logo.png)](http://2014.empirejs.org/)
 
-Technical and Social Progress toward ECMAScript 6 at Facebook
+Easing into ECMAScript 6 and Beyond
 ===
 
 [Ben Newman](https://github.com/benjamn) ([Facebook](https://code.facebook.com/projects))<br>
-[NodeJS](http://www.meetup.com/nodejs/) @ [Pivotal Labs](http://pivotallabs.com/)<br>
-[7:00pm Wednesday, 19 March 2014](http://www.meetup.com/nodejs/events/161765832/)<br>
+[EmpireJS 2014](http://2014.empirejs.org/)<br>
+[4:50pm Tuesday, May 6th](http://2014.empirejs.org/#/schedule)
 
 Abstract
 ---
