@@ -1845,9 +1845,9 @@ Context.prototype.keys = function(object) {
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small fragment"
+            <pre class="iterObj-left small fragment"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -1855,9 +1855,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small fragment"
+            <pre class="iterObj-right small fragment"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -1881,16 +1881,16 @@ function objMap(obj, callback) {
 
 
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -1898,9 +1898,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -1924,16 +1924,16 @@ function objMap(obj, callback) {
 
 
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -1941,9 +1941,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -1967,15 +1967,15 @@ function objMap(obj, callback) {
 
 
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -1983,9 +1983,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -2009,16 +2009,16 @@ function objMap(obj, callback) {
     case "end":
       return context.stop();
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -2026,9 +2026,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -2052,16 +2052,16 @@ function objMap(obj, callback) {
     case "end":
       return context.stop();
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -2069,9 +2069,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -2095,16 +2095,16 @@ function objMap(obj, callback) {
     case "end":
       return context.stop();
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -2112,9 +2112,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -2138,16 +2138,16 @@ function objMap(obj, callback) {
     case "end":
       return context.stop();
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
 
           <section class="two-up" data-transition="none">
             <h2>Example: <code>for</code>-<code>in</code> loops</h2>
-            <pre class="objMap-left small"
+            <pre class="iterObj-left small"
                  data-language="javascript">
-function *objMap(obj, callback) {
+function *iterObj(obj, callback) {
   before();
   for (var k in obj) {
     yield callback(k, obj[k]);
@@ -2155,9 +2155,9 @@ function *objMap(obj, callback) {
   after();
 }
             </pre>
-            <pre class="objMap-right small"
+            <pre class="iterObj-right small"
                  data-language="javascript">
-function objMap(obj, callback) {
+var iterObj = function iterObj(obj, callback) {
   var k;
   return wrapGenerator(function(context) {
     while (1) switch (context.next) {
@@ -2181,8 +2181,8 @@ function objMap(obj, callback) {
     case "end":
       return context.stop();
     }
-  }, this);
-}
+  }, iterObj, this);
+};
             </pre>
           </section>
         </section>

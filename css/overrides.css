@@ -128,13 +128,13 @@ img.interstitial {
   padding-right: 100px;
 }
 
-.reveal section.two-up .objMap-left {
+.reveal section.two-up .iterObj-left {
   position: relative;
   float: left;
   left: 100px;
 }
 
-.reveal section.two-up .objMap-right {
+.reveal section.two-up .iterObj-right {
   position: relative;
   float: left;
   left: 150px;
