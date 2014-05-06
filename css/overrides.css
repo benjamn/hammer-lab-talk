@@ -141,3 +141,7 @@ img.interstitial {
   float: left;
   left: 150px;
 }
+
+.reveal section h2 {
+  line-height: 1.2em !important;
+}
