@@ -1423,89 +1423,119 @@ var fibonacci = function fibonacci(limit) {
         </section>
 
         <section>
-          <p>
-            Check out
-            <a href="http://facebook.github.io/regenerator/"
-               target="_blank">facebook.github.io/regenerator</a> for a
-            convenient way to experiment with insane code and easily
-            report any bugs that you find.
-          </p>
+          <h2>The next step: <code>async</code> functions</h2>
           <br>
-          <p class="fragment">
-            I can go into a lot more detail if there are questions, and of
-            course <a href="https://github.com/benjamn/regenerator">https://github.com/facebook/regenerator</a>
-            is the final authority on how the transformation currently
-            works.
-          </p>
+          <pre class="big fragment" data-language="javascript">
+async function chainAnimations(elem, animations) {
+  var ret = null;
+  for (var i = 0; i < animations.length; ++i)
+    ret = await animations[i](elem);
+  return ret;
+}
+
+chainAnimations($("#card"), [
+  flip(100), slide(200), ...
+]).then(function() {
+  console.log("all done!");
+});
+          </pre>
+        </section>
+
+        <section id="async-codegen">
+          <h2>Almost identical to the generator transform:</h2>
           <br>
-          <p class="fragment">
-            Right now, though, I want to talk about something<br>
-            much less technical.
-          </p>
+          <pre class="small" data-language="javascript">
+function chainAnimations(elem, animations) {
+  var ret, i;
+  return wrapGenerator.async(function(context) {
+    while (1) switch (context.next) {
+    case 0:
+      ret = null;
+      i = 0;
+    case 2:
+      if (!(i < animations.length)) {
+        context.next = 9;
+        break;
+      }
+      context.next = 5;
+      return animations[i](elem);
+    case 5:
+      ret = context.sent;
+    case 6:
+      ++i;
+      context.next = 2;
+      break;
+    case 9:
+      return context.abrupt("return", ret);
+    case 10:
+    case "end":
+      return context.stop();
+    }
+  }, null, this);
+}
+          </pre>
+        </section>
+
+        <section id="async-codegen">
+          <h2>With a little <code>Promise</code> magic thrown in:</h2>
+          <pre class="small" data-language="javascript">
+wrapGenerator.async = function(innerFn, self, tryList) {
+  return new Promise(function(resolve, reject) {
+    var generator = wrapGenerator(innerFn, self, tryList);
+    var callNext = step.bind(generator.next);
+    var callThrow = step.bind(generator.throw);
+
+    function step(arg) {
+      try {
+        var info = this(arg);
+        var value = info.value;
+      } catch (error) {
+        return reject(error);
+      }
+
+      if (info.done) {
+        resolve(value);
+      } else {
+        Promise.resolve(value).then(callNext, callThrow);
+      }
+    }
+
+    callNext();
+  });
+};
+          </pre>
+        </section>
+
+        <section>
+          <h2>
+            Support for <code>async</code> functions and
+            the <code>await</code> keyword has already been fully
+            implemented in
+            <a href="https://github.com/facebook/regenerator/pull/101"
+            target="_blank">this pull request</a>.
+          </h2>
+        </section>
+
+        <section>
+          <h2>But wait!</h2>
+          <br>
+          <h3 class="fragment">
+            When can we expect native support for <code>async</code>
+            functions and the <code>await</code> keyword?
+          </h3>
+        </section>
+
+        <section>
+          <h2>[Dorothy voice]</h2>
+          <br>
+          <h3 class="fragment"><i>
+            Toto, I have a feeling we're not talking about ECMAScript 6
+            anymore...
+          </i></h3>
         </section>
 
         <section data-transition="zoom">
           <img class="interstitial" src="img/pouring_tea.jpg" />
-        </section>
-
-        <section>
-          <h1>Motivation</h1>
-          <br>
-          <p class="fragment">
-            How can you stay motivated to finish a difficult side project
-            that isn't directly related to your day job?
-          </p>
-          <aside class="notes">
-            <p>
-              Unless you're some kind of superhero, you can't just rely on
-              having boundless enthusiasm for programming. It runs out.
-            </p>
-            <p>
-              Telling yourself, "The trick&hellip; is not minding that it
-              hurts"<br> is not a sustainable strategy.
-            </p>
-          </aside>
-        </section>
-
-        <section>
-          <h2><ol start="1"><li>
-            Keep it fun.
-          </li></ol></h2>
-          <br>
-          <p class="fragment">
-            Writing tests is even more important for side projects than it
-            is for day-to-day coding.
-          </p>
-          <br>
-          <p class="fragment">
-            Time your breaks for when you're pretty sure you know what
-            you need to do next.
-          </p>
-          <br>
-          <p class="fragment">
-            Guard your secrets, and don't oversell an unfinished project,
-            but let other people in when you have something to share.
-          </p>
-        </section>
-
-        <section>
-          <h2><ol start="2"><li>
-            Don't be discouraged by similar projects.
-          </li></ol></h2>
-          <br>
-          <p class="fragment">
-            Even when they seem to have a head start.
-          </p>
-          <br>
-          <p class="fragment">
-            You have a distinct advantage as the underdog, because you
-            know exactly what success would look like.
-          </p>
-          <br>
-          <p class="fragment">
-            Whenever you feel discouraged, realize that other people will
-            probably be discouraged for the same reason.
-          </p>
         </section>
 
         <section>

@@ -34,7 +34,8 @@ body > .CodeMirror {
 section#tilde-trick-traverse .CodeMirror,
 section#rest-param-traverse .CodeMirror,
 section#arrow-fn-traverse .CodeMirror,
-section#generator-codegen .CodeMirror {
+section#generator-codegen .CodeMirror,
+section#async-codegen .CodeMirror {
   display: block;
   position: relative;
   margin: 0;
