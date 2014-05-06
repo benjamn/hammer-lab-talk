@@ -1442,8 +1442,6 @@ chainAnimations($("#card"), [
         </section>
 
         <section id="async-codegen">
-          <h2>Almost identical to the generator transform:</h2>
-          <br>
           <pre class="small" data-language="javascript">
 function chainAnimations(elem, animations) {
   var ret, i;
@@ -1477,7 +1475,6 @@ function chainAnimations(elem, animations) {
         </section>
 
         <section id="async-codegen">
-          <h2>With a little <code>Promise</code> magic thrown in:</h2>
           <pre class="small" data-language="javascript">
 wrapGenerator.async = function(innerFn, self, tryList) {
   return new Promise(function(resolve, reject) {
@@ -1570,7 +1567,7 @@ wrapGenerator.async = function(innerFn, self, tryList) {
           </p>
           <br>
           <p class="fragment">
-            AST transforms don't always play nicely together.
+            AST transforms don't always play well together.
           </p>
           <br>
           <p class="fragment">
@@ -1579,8 +1576,7 @@ wrapGenerator.async = function(innerFn, self, tryList) {
           </p>
           <br>
           <p class="fragment">
-            The language specification can change out from under you if
-            you guess wrong.
+            The language specification can change out from under you.
           </p>
         </section>
 
@@ -1589,7 +1585,9 @@ wrapGenerator.async = function(innerFn, self, tryList) {
             My team at Facebook will be working on this problem for as
             long as it takes to make the process seamless.
           </h2>
-          <br>
+        </section>
+
+        <section>
           <p class="fragment">
             It's all going to be open-source.
           </p>
@@ -1614,8 +1612,8 @@ wrapGenerator.async = function(innerFn, self, tryList) {
           <h2>External links:</h2>
           <br>
           <pre class="contact">github.com/{
-  <a href="https://github.com/benjamn/pivotal-meetup-talk"
-     target="_blank">benjamn/pivotal-meetup-talk</a>,
+  <a href="https://github.com/benjamn/empirejs-talk"
+     target="_blank">benjamn/empirejs-talk</a>,
   <a href="https://github.com/facebook/jstransform"
      target="_blank">facebook/jstransform</a>,
   <a href="https://github.com/benjamn/recast"
