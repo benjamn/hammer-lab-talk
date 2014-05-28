@@ -2593,6 +2593,468 @@ Emitter.prototype.explodeStatement = function(path) {
 };</pre>
         </section>
 
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function *attempt(block) {
+  console.log("before");
+  try {
+    var result = block();
+  } catch (thrown) {
+    yield thrown;
+  }
+  console.log("after");
+  return result;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function attempt(block) {
+  var result;
+
+  return wrapGenerator(function(context) {
+    while (1) switch (context.prev = context.next) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+  }, attempt, this);
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function attempt(block) {
+  var result;
+
+  return wrapGenerator(function(context) {
+    while (1) switch (context.prev = context.next) {
+    case 0:
+      console.log("before");
+      context.prev = 1;
+      result = block();
+      context.next = 9;
+      break;
+
+
+
+
+
+
+
+
+
+
+
+    }
+  }, attempt, this);
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function attempt(block) {
+  var result;
+
+  return wrapGenerator(function(context) {
+    while (1) switch (context.prev = context.next) {
+    case 0:
+      console.log("before");
+      context.prev = 1;
+      result = block();
+      context.next = 9;
+      break;
+    case 5:
+      context.prev = 5;
+      context.t0 = context.catch(1);
+      context.next = 9;
+      return context.t0;
+
+
+
+
+
+
+    }
+  }, attempt, this);
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function attempt(block) {
+  var result;
+
+  return wrapGenerator(function(context) {
+    while (1) switch (context.prev = context.next) {
+    case 0:
+      console.log("before");
+      context.prev = 1;
+      result = block();
+      context.next = 9;
+      break;
+    case 5:
+      context.prev = 5;
+      context.t0 = context.catch(1);
+      context.next = 9;
+      return context.t0;
+    case 9:
+      console.log("after");
+      return context.abrupt("return", result);
+
+
+
+    }
+  }, attempt, this);
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function attempt(block) {
+  var result;
+
+  return wrapGenerator(function(context) {
+    while (1) switch (context.prev = context.next) {
+    case 0:
+      console.log("before");
+      context.prev = 1;
+      result = block();
+      context.next = 9;
+      break;
+    case 5:
+      context.prev = 5;
+      context.t0 = context.catch(1);
+      context.next = 9;
+      return context.t0;
+    case 9:
+      console.log("after");
+      return context.abrupt("return", result);
+    case 11:
+    case "end":
+      return context.stop();
+    }
+  }, attempt, this);
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception handling</h3>
+          <pre class="small" data-language="javascript">
+function attempt(block) {
+  var result;
+
+  return wrapGenerator(function(context) {
+    while (1) switch (context.prev = context.next) {
+    case 0:
+      console.log("before");
+      context.prev = 1;
+      result = block();
+      context.next = 9;
+      break;
+    case 5:
+      context.prev = 5;
+      context.t0 = context.catch(1);
+      context.next = 9;
+      return context.t0;
+    case 9:
+      console.log("after");
+      return context.abrupt("return", result);
+    case 11:
+    case "end":
+      return context.stop();
+    }
+  }, attempt, this, [[1, 5]]);
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+  state = GenStateExecuting;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+  state = GenStateExecuting;
+
+  try {
+
+
+
+
+
+
+
+
+  } catch (thrown) {
+
+
+  }
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+  state = GenStateExecuting;
+
+  try {
+    var value = innerFn.call(self, context);
+
+
+
+
+
+
+
+  } catch (thrown) {
+
+
+  }
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+  state = GenStateExecuting;
+
+  try {
+    var value = innerFn.call(self, context);
+
+    // If an exception is thrown from innerFn, we leave state ===
+    // GenStateExecuting and loop back for another invocation.
+    state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+
+
+
+  } catch (thrown) {
+
+
+  }
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+  state = GenStateExecuting;
+
+  try {
+    var value = innerFn.call(self, context);
+
+    // If an exception is thrown from innerFn, we leave state ===
+    // GenStateExecuting and loop back for another invocation.
+    state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+
+    return { value: value, done: context.done };
+
+  } catch (thrown) {
+
+
+  }
+}</pre>
+        </section>
+
+        <section id="exception-handling" data-transition="none">
+          <h3>Exception dispatch (runtime/dev.js)</h3>
+          <pre class="small" data-language="javascript">
+while (true) {
+  if (state === GenStateSuspendedYield) {
+    context.sent = arg;
+  } else {
+    delete context.sent;
+  }
+
+  state = GenStateExecuting;
+
+  try {
+    var value = innerFn.call(self, context);
+
+    // If an exception is thrown from innerFn, we leave state ===
+    // GenStateExecuting and loop back for another invocation.
+    state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+
+    return { value: value, done: context.done };
+
+  } catch (thrown) {
+    state = GenStateCompleted;
+    context.dispatchException(thrown);
+  }
+}</pre>
+        </section>
+
         <section data-transition="zoom">
           <img class="interstitial" src="img/phi_phi_snake.jpg"/>
         </section>

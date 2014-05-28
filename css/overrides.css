@@ -39,6 +39,7 @@ section#for-stmt-codegen .CodeMirror,
 section#loc-and-mark .CodeMirror,
 section#jump-if-not .CodeMirror,
 section#explode-statement .CodeMirror,
+section#exception-handling .CodeMirror,
 section#async-codegen .CodeMirror {
   display: block;
   position: relative;
