@@ -36,11 +36,17 @@ section#rest-param-traverse .CodeMirror,
 section#arrow-fn-traverse .CodeMirror,
 section#generator-codegen .CodeMirror,
 section#for-stmt-codegen .CodeMirror,
+section#loc-and-mark .CodeMirror,
+section#jump-if-not .CodeMirror,
+section#explode-statement .CodeMirror,
 section#async-codegen .CodeMirror {
   display: block;
   position: relative;
   margin: 0;
   left: 200px;
+}
+section#loc-and-mark .CodeMirror {
+  left: 120px;
 }
 
 .CodeMirror.big {

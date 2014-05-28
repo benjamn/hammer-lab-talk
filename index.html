@@ -1999,6 +1999,596 @@ function permutations(list) {
           </section>
         </section>
 
+        <section id="loc-and-mark" data-transition="none">
+          <h2><code>loc()</code> and <code>this.mark(loc)</code></h2>
+          <pre class="small" data-language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+        </section>
+
+        <section id="loc-and-mark" data-transition="none">
+          <h2><code>loc()</code> and <code>this.mark(loc)</code></h2>
+          <pre class="small" data-language="javascript">
+// Offsets into this.listing that could be used as targets for branches or
+// jumps are represented as numeric Literal nodes.
+function loc() {
+  return b.literal(-1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+        </section>
+
+        <section id="loc-and-mark" data-transition="none">
+          <h2><code>loc()</code> and <code>this.mark(loc)</code></h2>
+          <pre class="small" data-language="javascript">
+// Offsets into this.listing that could be used as targets for branches or
+// jumps are represented as numeric Literal nodes.
+function loc() {
+  return b.literal(-1);
+}
+
+// Sets the exact value of the given location to the offset of the next
+// Statement emitted.
+Emitter.prototype.mark = function(loc) {
+  n.Literal.assert(loc);
+  var index = this.listing.length;
+  if (loc.value === -1) {
+    loc.value = index;
+  } else {
+    // Locations can be marked redundantly, but their values cannot change
+    // once set the first time.
+    assert.strictEqual(loc.value, index);
+  }
+  this.marked[index] = true;
+  return loc;
+};</pre>
+        </section>
+
+        <section id="loc-and-mark" data-transition="none">
+          <h2><code>loc()</code> and <code>this.mark(loc)</code></h2>
+          <pre class="small" data-language="javascript">
+// Offsets into this.listing that could be used as targets for branches or
+// jumps are represented as numeric Literal nodes.
+function loc() {
+  return require("recast").types.builders.literal(-1);
+}
+
+// Sets the exact value of the given location to the offset of the next
+// Statement emitted.
+Emitter.prototype.mark = function(loc) {
+  require("recast").types.namedTypes.Literal.assert(loc);
+  var index = this.listing.length;
+  if (loc.value === -1) {
+    loc.value = index;
+  } else {
+    // Locations can be marked redundantly, but their values cannot change
+    // once set the first time.
+    assert.strictEqual(loc.value, index);
+  }
+  this.marked[index] = true;
+  return loc;
+};</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+// Conditional jump, with the condition negated.
+Emitter.prototype.jumpIfNot = function(test, toLoc) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+// Conditional jump, with the condition negated.
+Emitter.prototype.jumpIfNot = function(test, toLoc) {
+  n.Expression.assert(test);
+  n.Literal.assert(toLoc);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+// Conditional jump, with the condition negated.
+Emitter.prototype.jumpIfNot = function(test, toLoc) {
+  n.Expression.assert(test);
+  n.Literal.assert(toLoc);
+
+  var negatedTest;
+  if (n.UnaryExpression.check(test) &&
+      test.operator === "!") {
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+// Conditional jump, with the condition negated.
+Emitter.prototype.jumpIfNot = function(test, toLoc) {
+  n.Expression.assert(test);
+  n.Literal.assert(toLoc);
+
+  var negatedTest;
+  if (n.UnaryExpression.check(test) &&
+      test.operator === "!") {
+    // Avoid double negation.
+    negatedTest = test.argument;
+  }
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+// Conditional jump, with the condition negated.
+Emitter.prototype.jumpIfNot = function(test, toLoc) {
+  n.Expression.assert(test);
+  n.Literal.assert(toLoc);
+
+  var negatedTest;
+  if (n.UnaryExpression.check(test) &&
+      test.operator === "!") {
+    // Avoid double negation.
+    negatedTest = test.argument;
+  } else {
+    negatedTest = b.unaryExpression("!", test);
+  }
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="jump-if-not" data-transition="none">
+          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+// Conditional jump, with the condition negated.
+Emitter.prototype.jumpIfNot = function(test, toLoc) {
+  n.Expression.assert(test);
+  n.Literal.assert(toLoc);
+
+  var negatedTest;
+  if (n.UnaryExpression.check(test) &&
+      test.operator === "!") {
+    // Avoid double negation.
+    negatedTest = test.argument;
+  } else {
+    negatedTest = b.unaryExpression("!", test);
+  }
+
+  this.emit(b.ifStatement(
+    negatedTest,
+    b.blockStatement([
+      this.assign(this.contextProperty("next"), toLoc),
+      b.breakStatement()
+    ])
+  ));
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+  if (!require("./meta").containsLeap(stmt)) {
+    self.emit(stmt);
+    return;
+  }
+
+
+
+
+
+
+
+
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+  if (!require("./meta").containsLeap(stmt)) {
+    self.emit(stmt);
+    return;
+  }
+
+  switch (stmt.type) {
+
+
+
+
+
+  }
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+  if (!require("./meta").containsLeap(stmt)) {
+    self.emit(stmt);
+    return;
+  }
+
+  switch (stmt.type) {
+  case "ForStatement":
+
+
+
+
+  }
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+  if (!require("./meta").containsLeap(stmt)) {
+    self.emit(stmt);
+    return;
+  }
+
+  switch (stmt.type) {
+  case "ForStatement": ... break; ...
+
+
+
+
+  }
+};</pre>
+        </section>
+
+        <section id="explode-statement" data-transition="none">
+          <h3><code>this.explodeStatement(path)</code></h3>
+          <br>
+          <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  assert.ok(path instanceof require("recast").types.NodePath);
+
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+  if (!require("./meta").containsLeap(stmt)) {
+    self.emit(stmt);
+    return;
+  }
+
+  switch (stmt.type) {
+  case "ForStatement": ... break; ...
+  default:
+    throw new Error(
+      "unknown Statement of type " +
+        JSON.stringify(stmt.type));
+  }
+};</pre>
+        </section>
+
         <section data-transition="zoom">
           <img class="interstitial" src="img/phi_phi_snake.jpg"/>
         </section>
