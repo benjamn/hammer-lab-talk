@@ -1629,6 +1629,376 @@ function permutations(list) {
           </div>
         </section>
 
+        <section id="for-stmt-codegen"
+                 data-transition="none">
+          <section>
+            <h2>Example: <code>ForStatement</code> code generation</h2>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+    self.leapManager.withEntry(
+      new leap.LoopEntry(after, update, labelId),
+      function() { self.explodeStatement(path.get("body")); }
+    );
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+    self.leapManager.withEntry(
+      new leap.LoopEntry(after, update, labelId),
+      function() { self.explodeStatement(path.get("body")); }
+    );
+
+    self.mark(update);
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+    self.leapManager.withEntry(
+      new leap.LoopEntry(after, update, labelId),
+      function() { self.explodeStatement(path.get("body")); }
+    );
+
+    self.mark(update);
+
+    if (stmt.update) {
+      self.explode(path.get("update"), true);
+    }
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+    self.leapManager.withEntry(
+      new leap.LoopEntry(after, update, labelId),
+      function() { self.explodeStatement(path.get("body")); }
+    );
+
+    self.mark(update);
+
+    if (stmt.update) {
+      self.explode(path.get("update"), true);
+    }
+
+    self.jump(head);
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+    self.leapManager.withEntry(
+      new leap.LoopEntry(after, update, labelId),
+      function() { self.explodeStatement(path.get("body")); }
+    );
+
+    self.mark(update);
+
+    if (stmt.update) {
+      self.explode(path.get("update"), true);
+    }
+
+    self.jump(head);
+    self.mark(after);
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <pre class="small" data-language="javascript">
+  case "ForStatement":
+    var head = loc();
+    var update = loc();
+    var after = loc();
+
+    if (stmt.init) {
+      self.explode(path.get("init"), true);
+    }
+
+    self.mark(head);
+
+    if (stmt.test) {
+      self.jumpIfNot(self.explodeExpression(path.get("test")), after);
+    }
+
+    self.leapManager.withEntry(
+      new leap.LoopEntry(after, update, labelId),
+      function() { self.explodeStatement(path.get("body")); }
+    );
+
+    self.mark(update);
+
+    if (stmt.update) {
+      self.explode(path.get("update"), true);
+    }
+
+    self.jump(head);
+    self.mark(after);
+    break;</pre>
+          </section>
+        </section>
+
         <section data-transition="zoom">
           <img class="interstitial" src="img/phi_phi_snake.jpg"/>
         </section>
