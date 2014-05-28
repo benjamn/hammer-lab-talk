@@ -122,12 +122,12 @@ img.interstitial {
 
 .reveal section.two-up .left {
   float: left;
-  padding-left: 120px;
+  padding-left: 0;
 }
 
 .reveal section.two-up .right {
   float: right;
-  padding-right: 100px;
+  padding-right: 0;
 }
 
 .reveal section.two-up .iterObj-left {
