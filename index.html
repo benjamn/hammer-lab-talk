@@ -114,7 +114,7 @@
               Other people won't be willing to buy in unless you justify
               the effort and short-term increase in complexity.
             <p>
-          </p>
+          </aside>
         </section>
 
         <section>
@@ -1629,8 +1629,7 @@ function permutations(list) {
           <h2><code>ForStatement</code> code generation</h2>
         </section>
 
-        <section id="for-stmt-codegen"
-                 data-transition="none">
+        <section id="for-stmt-codegen">
           <section data-transition="none">
             <pre class="small" data-language="javascript">
   case "ForStatement":
@@ -1999,10 +1998,11 @@ function permutations(list) {
           <img class="interstitial" src="img/led_splatter.jpg" />
         </section>
 
-        <section id="loc-and-mark" data-transition="none">
-          <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+        <section id="loc-and-mark">
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 
 
 
@@ -2024,12 +2024,12 @@ function permutations(list) {
 
 
 </pre>
-        </section>
+          </section>
 
-        <section id="loc-and-mark" data-transition="none">
-          <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Offsets into this.listing that could be used as targets for branches or
 // jumps are represented as numeric Literal nodes.
 function loc() {
@@ -2051,12 +2051,12 @@ function loc() {
 
 
 </pre>
-        </section>
+          </section>
 
-        <section id="loc-and-mark" data-transition="none">
-          <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Offsets into this.listing that could be used as targets for branches or
 // jumps are represented as numeric Literal nodes.
 function loc() {
@@ -2078,12 +2078,12 @@ Emitter.prototype.mark = function(loc) {
   this.marked[index] = true;
   return loc;
 };</pre>
-        </section>
+          </section>
 
-        <section id="loc-and-mark" data-transition="none">
-          <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Offsets into this.listing that could be used as targets for branches or
 // jumps are represented as numeric Literal nodes.
 function loc() {
@@ -2105,16 +2105,18 @@ Emitter.prototype.mark = function(loc) {
   this.marked[index] = true;
   return loc;
 };</pre>
+          </section>
         </section>
 
         <section data-transition="zoom">
           <img class="interstitial" src="img/ramified_sunset.jpg" />
         </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+        <section id="jump-if-not">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 
 
 
@@ -2137,12 +2139,12 @@ Emitter.prototype.mark = function(loc) {
 
 
 </pre>
-        </section>
+          </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Conditional jump, with the condition negated.
 Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
@@ -2165,12 +2167,12 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Conditional jump, with the condition negated.
 Emitter.prototype.jumpIfNot = function(test, toLoc) {
   n.Expression.assert(test);
@@ -2193,12 +2195,12 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Conditional jump, with the condition negated.
 Emitter.prototype.jumpIfNot = function(test, toLoc) {
   n.Expression.assert(test);
@@ -2221,12 +2223,12 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Conditional jump, with the condition negated.
 Emitter.prototype.jumpIfNot = function(test, toLoc) {
   n.Expression.assert(test);
@@ -2249,12 +2251,12 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Conditional jump, with the condition negated.
 Emitter.prototype.jumpIfNot = function(test, toLoc) {
   n.Expression.assert(test);
@@ -2277,12 +2279,12 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="jump-if-not" data-transition="none">
-          <h3><code>this.jumpIfNot(expr, loc)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.jumpIfNot(expr, loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 // Conditional jump, with the condition negated.
 Emitter.prototype.jumpIfNot = function(test, toLoc) {
   n.Expression.assert(test);
@@ -2305,16 +2307,18 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
     ])
   ));
 };</pre>
+          </section>
         </section>
 
         <section data-transition="zoom">
           <img class="interstitial" src="img/rusty_rebar.jpg" />
         </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+        <section id="explode-statement">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 
 
 
@@ -2338,12 +2342,12 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 </pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
 
 
@@ -2367,12 +2371,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2396,12 +2400,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2425,12 +2429,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2454,12 +2458,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2483,12 +2487,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2512,12 +2516,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
   }
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2541,12 +2545,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
   }
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2570,12 +2574,12 @@ Emitter.prototype.explodeStatement = function(path) {
 
   }
 };</pre>
-        </section>
+          </section>
 
-        <section id="explode-statement" data-transition="none">
-          <h3><code>this.explodeStatement(path)</code></h3>
-          <br>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
   assert.ok(path instanceof require("recast").types.NodePath);
 
@@ -2599,15 +2603,17 @@ Emitter.prototype.explodeStatement = function(path) {
         JSON.stringify(stmt.type));
   }
 };</pre>
+          </section>
         </section>
 
         <section data-transition="zoom">
           <img class="interstitial" src="img/pyrosynthesis.jpg" />
         </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+        <section id="exception-handling">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function *attempt(block) {
   console.log("before");
   try {
@@ -2633,11 +2639,11 @@ function *attempt(block) {
 
 
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function attempt(block) {
   var result;
 
@@ -2663,11 +2669,11 @@ function attempt(block) {
     }
   }, attempt, this);
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function attempt(block) {
   var result;
 
@@ -2693,11 +2699,11 @@ function attempt(block) {
     }
   }, attempt, this);
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function attempt(block) {
   var result;
 
@@ -2723,11 +2729,11 @@ function attempt(block) {
     }
   }, attempt, this);
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function attempt(block) {
   var result;
 
@@ -2753,11 +2759,11 @@ function attempt(block) {
     }
   }, attempt, this);
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function attempt(block) {
   var result;
 
@@ -2783,11 +2789,11 @@ function attempt(block) {
     }
   }, attempt, this);
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception handling</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception handling</h3>
+            <pre class="small" data-language="javascript">
 function attempt(block) {
   var result;
 
@@ -2813,11 +2819,11 @@ function attempt(block) {
     }
   }, attempt, this, [[1, 5]]);
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 
 
 
@@ -2841,11 +2847,11 @@ function attempt(block) {
 
 
 </pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
 
 
@@ -2869,11 +2875,11 @@ while (true) {
 
 
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -2897,11 +2903,11 @@ while (true) {
 
 
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -2925,11 +2931,11 @@ while (true) {
 
 
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -2953,11 +2959,11 @@ while (true) {
 
   }
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -2981,11 +2987,11 @@ while (true) {
 
   }
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -3009,11 +3015,11 @@ while (true) {
 
   }
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -3037,11 +3043,11 @@ while (true) {
 
   }
 }</pre>
-        </section>
+          </section>
 
-        <section id="exception-handling" data-transition="none">
-          <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
-          <pre class="small" data-language="javascript">
+          <section data-transition="none">
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
     context.sent = arg;
@@ -3065,6 +3071,7 @@ while (true) {
     context.dispatchException(thrown);
   }
 }</pre>
+          </section>
         </section>
 
         <section data-transition="zoom">
@@ -3163,7 +3170,7 @@ wrapGenerator.async = function(innerFn, self, tryList) {
             the <code>await</code> keyword has already been fully
             implemented in
             <a href="https://github.com/facebook/regenerator/pull/101"
-            target="_blank">this pull request</a>.
+               target="_blank">this pull request</a>.
           </h2>
         </section>
 
@@ -3178,7 +3185,7 @@ wrapGenerator.async = function(innerFn, self, tryList) {
 
         <section>
           <h3><i>
-            I have a feeling we're not talking about ECMAScript 6 anymore...
+              I have a feeling we're not talking about ECMAScript 6 anymore...
           </i></h3>
         </section>
 
@@ -3205,8 +3212,8 @@ wrapGenerator.async = function(innerFn, self, tryList) {
           <br>
           <p class="fragment">
             It is, <span class="fragment">quite
-            literally,</span> <span class="fragment">linguistic time
-            travel.</span>
+              literally,</span> <span class="fragment">linguistic time
+              travel.</span>
           </p>
         </section>
 
