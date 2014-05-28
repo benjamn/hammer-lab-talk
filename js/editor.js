@@ -11,7 +11,7 @@ function makeCodeMirror(sourceNodeOrId, /*optional:*/ targetNodeOrId, transform)
     : targetNodeOrId;
 
   sourceNode.style.whiteSpace = "pre";
-  var origValue = sourceNode.textContent.replace(/\s+$/g, "");
+  var origValue = sourceNode.textContent;
 
   function delayedReplace(newNode, oldNode) {
     if (oldNode.className) {
