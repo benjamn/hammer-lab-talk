@@ -1,29 +1,25 @@
-[![EmpireJS](img/empirejs_logo.png)](http://2014.empirejs.org/)
+[![JSConf](img/jsconf_logo.png)](http://2014.jsconf.us/)
 
-Easing into ECMAScript 6 and Beyond
+Yield Ahead: [Regenerator](http://facebook.github.io/regenerator/) in Depth
 ===
 
 [Ben Newman](https://github.com/benjamn) ([Facebook](https://code.facebook.com/projects))<br>
-[EmpireJS 2014](http://2014.empirejs.org/)<br>
-[4:50pm Tuesday, May 6th](http://2014.empirejs.org/#/schedule)
+[JSConf 2014](http://2014.jsconf.us/)<br>
+[3:00pm Wednesday, May 28th](http://2014.jsconf.us/trackb.html#newman)
 
 Abstract
 ---
 
-Recent progress toward the next version of the ECMAScript specification is
-certainly exciting, but some of us have a hard time waiting for the future
-to get here. At Facebook we have already implemented a few of the most
-promising ECMAScript 6 features in terms of browser-safe
-JavaScript-of-today, and we are thrilled to be releasing that growing
-toolchain as an open source project for the benefit of (and so that we
-might benefit from) the broader JS community. Now, it’s one thing to add
-support for new language features to your build process, but quite another
-challenge to change old habits and popularize best practices at the scale
-of the Facebook codebase. This talk explains not only how we’ve made the
-best parts of ECMAScript 6 (classes, arrow functions, rest parameters,
-generators, and more) production-ready at Facebook, but also how we
-communicated the news to thousands of developers and accelerated the
-conversion of tens of thousands of files from the old idioms to the new.
+The future of JavaScript is too exciting to put on hold while native
+implementations get around to supporting much-needed new features like
+classes, generator functions, and modules. This talk dives into the
+concepts and techniques involved in transforming these futuristic syntaxes
+into JavaScript-of-today, through the lens of Facebook's Regenerator
+project, which efficiently simulates ES6 generator functions (and soon
+async functions too!) using plain ES5. Listeners will come away from this
+talk with a deep understanding of Regenerator's implementation, and also
+(hopefully!) a headful of ideas and tools for designing transforms of
+their own.
 
 Bio
 ---
