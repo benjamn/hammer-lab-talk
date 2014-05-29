@@ -2042,6 +2042,60 @@ function permutations(list) {
 // Offsets into this.listing that could be used as targets for branches or
 // jumps are represented as numeric Literal nodes.
 function loc() {
+  return { type: "Literal", value: -1 };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
+// Offsets into this.listing that could be used as targets for branches or
+// jumps are represented as numeric Literal nodes.
+function loc() {
+  return require("recast").types.builders.literal(-1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
+// Offsets into this.listing that could be used as targets for branches or
+// jumps are represented as numeric Literal nodes.
+function loc() {
   return b.literal(-1);
 }
 
@@ -2075,7 +2129,7 @@ function loc() {
 // Sets the exact value of the given location to the offset of the next
 // Statement emitted.
 Emitter.prototype.mark = function(loc) {
-  n.Literal.assert(loc);
+  assert.strictEqual(loc.type, "Literal");
   var index = this.listing.length;
   if (loc.value === -1) {
     loc.value = index;
@@ -2096,13 +2150,40 @@ Emitter.prototype.mark = function(loc) {
 // Offsets into this.listing that could be used as targets for branches or
 // jumps are represented as numeric Literal nodes.
 function loc() {
-  return require("recast").types.builders.literal(-1);
+  return b.literal(-1);
 }
 
 // Sets the exact value of the given location to the offset of the next
 // Statement emitted.
 Emitter.prototype.mark = function(loc) {
   require("recast").types.namedTypes.Literal.assert(loc);
+  var index = this.listing.length;
+  if (loc.value === -1) {
+    loc.value = index;
+  } else {
+    // Locations can be marked redundantly, but their values cannot change
+    // once set the first time.
+    assert.strictEqual(loc.value, index);
+  }
+  this.marked[index] = true;
+  return loc;
+};</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3><code>loc()</code> and <code>this.mark(loc)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
+// Offsets into this.listing that could be used as targets for branches or
+// jumps are represented as numeric Literal nodes.
+function loc() {
+  return b.literal(-1);
+}
+
+// Sets the exact value of the given location to the offset of the next
+// Statement emitted.
+Emitter.prototype.mark = function(loc) {
+  n.Literal.assert(loc);
   var index = this.listing.length;
   if (loc.value === -1) {
     loc.value = index;
