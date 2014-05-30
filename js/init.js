@@ -5,8 +5,13 @@ Array.prototype.forEach.call(
   }
 );
 
+var mobilePattern = /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i;
 Reveal.addEventListener("ready", function() {
   makeCodeMirror.init();
+  if (navigator.userAgent.match(mobilePattern)) {
+    alert("Warning: this presentation is large and contains multitudes, so " +
+          "mobile performance may be disappointing.");
+  }
 });
 
 // Full list of configuration options available here:
