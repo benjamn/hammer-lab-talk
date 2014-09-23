@@ -32,7 +32,6 @@
   </head>
 
   <body>
-    <img class="branding" src="img/fb_logo.png" />
     <div class="reveal">
       <div class="slides">
         <section>
@@ -41,10 +40,10 @@
           <p>
             <a href="https://github.com/benjamn/"
                target="_blank">Ben Newman</a>
-            (<a href="https://code.facebook.com/projects"
-                target="_blank">Facebook</a>)<br>
-            <a href="http://2014.jsconf.us/"
-               target="_blank">JSConf 2014</a>
+            (<a href="https://meteor.com/"
+                target="_blank">Meteor</a>)<br>
+            <a href="http://icahn.mssm.edu/"
+               target="_blank">September 23, 2014</a>
             <br>
             <br>
             <pre class="contact">
@@ -217,10 +216,8 @@
           <pre class="fragment big"
                data-language="javascript">
 var recast = require("recast");
-var types = recast.types;
-var traverse = types.traverse;
-var n = types.namedTypes;
-var b = types.builders;
+var n = recast.types.namedTypes;
+var b = recast.types.builders;
 
 var ast = recast.parse(
   "[3, 1, 10, 28].sort((a, b) => a - b)"
@@ -232,8 +229,7 @@ var ast = recast.parse(
             <h3>Next, traverse and modify the syntax tree:</h3>
             <br>
             <pre class="small" data-language="javascript">
-traverse(ast, function(node) {
-
+recast.visit(ast, {
 
 
 
@@ -260,9 +256,8 @@ traverse(ast, function(node) {
             <h3>Next, traverse and modify the syntax tree:</h3>
             <br>
             <pre class="small" data-language="javascript">
-traverse(ast, function(node) {
-  if (n.ArrowFunctionExpression.check(node)) {
-
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
 
 
 
@@ -283,17 +278,46 @@ traverse(ast, function(node) {
   }
 });</pre>
           </section>
+
           <section data-transition="none">
             <h3>Next, traverse and modify the syntax tree:</h3>
             <br>
             <pre class="small" data-language="javascript">
-traverse(ast, function(node) {
-  if (n.ArrowFunctionExpression.check(node)) {
-    var body = node.body;
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
 
-    if (node.expression) {
-      node.expression = false;
-      body = b.blockStatement([b.returnStatement(body)]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+
+
+
     }
 
 
@@ -305,6 +329,31 @@ traverse(ast, function(node) {
 
 
 
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+
+
+    }
+
+
+
+
+
+
+
+
 
 
   }
@@ -315,17 +364,72 @@ traverse(ast, function(node) {
             <h3>Next, traverse and modify the syntax tree:</h3>
             <br>
             <pre class="small" data-language="javascript">
-traverse(ast, function(node) {
-  if (n.ArrowFunctionExpression.check(node)) {
-    var body = node.body;
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
 
-    if (node.expression) {
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
       node.expression = false;
-      body = b.blockStatement([b.returnStatement(body)]);
+    }
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
+      node.expression = false;
     }
 
     var funExp = b.functionExpression(
-      node.id, node.params, body,
+      node.id, node.params, node.body,
       node.generator, node.expression
     );
 
@@ -333,8 +437,6 @@ traverse(ast, function(node) {
 
 
 
-
-
   }
 });</pre>
           </section>
@@ -343,54 +445,25 @@ traverse(ast, function(node) {
             <h3>Next, traverse and modify the syntax tree:</h3>
             <br>
             <pre class="small" data-language="javascript">
-traverse(ast, function(node) {
-  if (n.ArrowFunctionExpression.check(node)) {
-    var body = node.body;
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
 
-    if (node.expression) {
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
       node.expression = false;
-      body = b.blockStatement([b.returnStatement(body)]);
     }
 
     var funExp = b.functionExpression(
-      node.id, node.params, body,
+      node.id, node.params, node.body,
       node.generator, node.expression
     );
 
-    var bindExp = b.callExpression(
+    return b.callExpression(
       b.memberExpression(funExp, b.identifier("bind"), false),
       [b.thisExpression()]
     );
-
-
-  }
-});</pre>
-          </section>
-
-          <section data-transition="none">
-            <h3>Next, traverse and modify the syntax tree:</h3>
-            <br>
-            <pre class="small" data-language="javascript">
-traverse(ast, function(node) {
-  if (n.ArrowFunctionExpression.check(node)) {
-    var body = node.body;
-
-    if (node.expression) {
-      node.expression = false;
-      body = b.blockStatement([b.returnStatement(body)]);
-    }
-
-    var funExp = b.functionExpression(
-      node.id, node.params, body,
-      node.generator, node.expression
-    );
-
-    var bindExp = b.callExpression(
-      b.memberExpression(funExp, b.identifier("bind"), false),
-      [b.thisExpression()]
-    );
-
-    this.replace(bindExp);
   }
 });</pre>
           </section>
@@ -508,7 +581,7 @@ find ~/www/html/js/lib | \
           <br>
           <h3 class="fragment">
             In case you're curious about the details, I gave a whole talk
-            about this project two months ago:
+            about this project back in March:
             <a href="http://benjamn.github.io/pivotal-meetup-talk/#/21"
                 target="_blank">slides</a>,
             <a href="https://www.youtube.com/watch?v=z_qc4T4BCGc&t=19m23s"
@@ -533,8 +606,7 @@ function *permutations(list) {
     yield list;
   } else {
     var first = list.slice(0, 1);
-    var ps = permutations(list.slice(1));
-    for (var p of ps) {
+    for (var p of permutations(list.slice(1))) {
       for (var i = 0; i < list.length; ++i) {
         yield Array.prototype.concat.call(
           p.slice(0, i), // prefix
@@ -576,8 +648,7 @@ function *permutations(list) {
     yield list;
   } else {
     var first = list.slice(0, 1);
-    var ps = permutations(list.slice(1));
-    for (var p of ps) {
+    for (var p of permutations(list.slice(1))) {
       for (var i = 0; i < list.length; ++i) {
         yield Array.prototype.concat.call(
           p.slice(0, i), // prefix
@@ -620,15 +691,11 @@ console.log(count); // 6</pre>
           </blockquote>
         </section>
 
-        <section>
-          <h2>It's the trickiest code I've ever written.</h2>
-        </section>
-
         <section class="two-up" data-transition="none">
           <div>
             <pre class="small left"
                  data-language="javascript">
-function permutations(list) {
+function *permutations(list) {
   if (list.length < 2) {
     yield list;
   } else {
@@ -687,7 +754,7 @@ function permutations(list) {
           <div>
             <pre class="small left"
                  data-language="javascript">
-function permutations(list) {
+function *permutations(list) {
   var first, ps, p, i;
 
   if (list.length < 2) {
@@ -746,7 +813,7 @@ function permutations(list) {
           <div>
             <pre class="small left"
                  data-language="javascript">
-function permutations(list) {
+function *permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
   if (list.length < 2) {
@@ -805,7 +872,7 @@ function permutations(list) {
           <div>
             <pre class="small left"
                  data-language="javascript">
-function permutations(list) {
+function *permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
   if (list.length < 2) {
@@ -813,7 +880,7 @@ function permutations(list) {
   } else {
     first = list.slice(0, 1);
     ps = permutations(list.slice(1));
-    t$0 = wrapGenerator.values(ps);
+    t$0 = regeneratorRuntime.values(ps);
     while (!(t$1 = t$0.next()).done) {
       p = t$1.value;
       for (i = 0; i < list.length; ++i) {
@@ -867,13 +934,13 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function*() {
+  return (function*() {
     if (list.length < 2) {
       yield list;
     } else {
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
       while (!(t$1 = t$0.next()).done) {
         p = t$1.value;
         for (i = 0; i < list.length; ++i) {
@@ -885,7 +952,7 @@ function permutations(list) {
         }
       }
     }
-  };
+  })();
 }
 
             </pre>
@@ -926,7 +993,66 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </pre>
+            <pre class="small right"
+                 data-language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+}</pre>
+          </div>
+        </section>
+
+        <section class="two-up" data-transition="none">
+          <div>
+            <pre class="small left"
+                 data-language="javascript">
+function permutations(list) {
+  var first, ps, p, t$0, t$1, i;
+
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
 
 
@@ -973,7 +1099,7 @@ function permutations(list) {
 
 
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -985,7 +1111,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1032,7 +1158,7 @@ function permutations(list) {
 
 
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1044,7 +1170,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1091,7 +1217,7 @@ function permutations(list) {
 
 
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1103,7 +1229,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1150,7 +1276,7 @@ function permutations(list) {
 
 
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1162,7 +1288,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1209,7 +1335,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1221,7 +1347,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1236,7 +1362,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
 
 
 
@@ -1268,7 +1394,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1280,7 +1406,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1295,7 +1421,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
     case 8:
       if ((t$1 = t$0.next()).done) {
         context.next = 19;
@@ -1327,7 +1453,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1339,7 +1465,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1354,7 +1480,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
     case 8:
       if ((t$1 = t$0.next()).done) {
         context.next = 19;
@@ -1386,7 +1512,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1398,7 +1524,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1413,7 +1539,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
     case 8:
       if ((t$1 = t$0.next()).done) {
         context.next = 19;
@@ -1445,7 +1571,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1457,7 +1583,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1472,7 +1598,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
     case 8:
       if ((t$1 = t$0.next()).done) {
         context.next = 19;
@@ -1504,7 +1630,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1516,7 +1642,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1531,7 +1657,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
     case 8:
       if ((t$1 = t$0.next()).done) {
         context.next = 19;
@@ -1563,7 +1689,7 @@ function permutations(list) {
     case "end":
       return context.stop();
     }
-  };
+  });
 }</pre>
           </div>
         </section>
@@ -1575,7 +1701,7 @@ function permutations(list) {
 function permutations(list) {
   var first, ps, p, t$0, t$1, i;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.next) {
     case 0:
       if (!(list.length < 2)) {
@@ -1590,7 +1716,7 @@ function permutations(list) {
     case 5:
       first = list.slice(0, 1);
       ps = permutations(list.slice(1));
-      t$0 = wrapGenerator.values(ps);
+      t$0 = regeneratorRuntime.values(ps);
     case 8:
       if ((t$1 = t$0.next()).done) {
         context.next = 19;
@@ -2430,7 +2556,6 @@ Emitter.prototype.jumpIfNot = function(test, toLoc) {
 
 
 
-
 </pre>
           </section>
 
@@ -2468,37 +2593,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-};</pre>
-          </section>
-
-          <section data-transition="none">
-            <h3><code>this.explodeStatement(path)</code></h3>
-            <br>
-            <pre class="small" data-language="javascript">
-Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2518,6 +2612,8 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 
+
+
 };</pre>
           </section>
 
@@ -2526,8 +2622,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2547,6 +2641,8 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 
+
+
 };</pre>
           </section>
 
@@ -2555,8 +2651,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2576,6 +2670,8 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 
+
+
 };</pre>
           </section>
 
@@ -2584,8 +2680,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2604,6 +2698,8 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 
+
+
   }
 };</pre>
           </section>
@@ -2613,8 +2709,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2633,6 +2727,8 @@ Emitter.prototype.explodeStatement = function(path) {
 
 
 
+
+
   }
 };</pre>
           </section>
@@ -2642,8 +2738,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2657,7 +2751,9 @@ Emitter.prototype.explodeStatement = function(path) {
   }
 
   switch (stmt.type) {
-  case "ForStatement": ... break; ...
+  case "ForStatement":
+    // See previous slides.
+    break;
 
 
 
@@ -2671,8 +2767,6 @@ Emitter.prototype.explodeStatement = function(path) {
             <br>
             <pre class="small" data-language="javascript">
 Emitter.prototype.explodeStatement = function(path) {
-  assert.ok(path instanceof require("recast").types.NodePath);
-
   var stmt = path.value;
   n.Statement.assert(stmt);
 
@@ -2686,11 +2780,42 @@ Emitter.prototype.explodeStatement = function(path) {
   }
 
   switch (stmt.type) {
-  case "ForStatement": ... break; ...
+  case "ForStatement":
+    // See previous slides.
+    break;
+  ...
+
+
+
+  }
+};</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3><code>this.explodeStatement(path)</code></h3>
+            <br>
+            <pre class="small" data-language="javascript">
+Emitter.prototype.explodeStatement = function(path) {
+  var stmt = path.value;
+  n.Statement.assert(stmt);
+
+  if (n.BlockStatement.check(stmt)) {
+    return path.get("body").each(self.explodeStatement, self);
+  }
+
+  if (!require("./meta").containsLeap(stmt)) {
+    self.emit(stmt);
+    return;
+  }
+
+  switch (stmt.type) {
+  case "ForStatement":
+    // See previous slides.
+    break;
+  ...
   default:
-    throw new Error(
-      "unknown Statement of type " +
-        JSON.stringify(stmt.type));
+    throw new Error("unknown Statement of type " +
+                    JSON.stringify(stmt.type));
   }
 };</pre>
           </section>
@@ -2737,7 +2862,7 @@ function *attempt(block) {
 function attempt(block) {
   var result;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.prev = context.next) {
 
 
@@ -2767,7 +2892,7 @@ function attempt(block) {
 function attempt(block) {
   var result;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.prev = context.next) {
     case 0:
       console.log("before");
@@ -2797,7 +2922,7 @@ function attempt(block) {
 function attempt(block) {
   var result;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.prev = context.next) {
     case 0:
       console.log("before");
@@ -2827,7 +2952,7 @@ function attempt(block) {
 function attempt(block) {
   var result;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.prev = context.next) {
     case 0:
       console.log("before");
@@ -2857,7 +2982,7 @@ function attempt(block) {
 function attempt(block) {
   var result;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.prev = context.next) {
     case 0:
       console.log("before");
@@ -2887,7 +3012,7 @@ function attempt(block) {
 function attempt(block) {
   var result;
 
-  return wrapGenerator(function(context) {
+  return regeneratorRuntime.wrap(function(context) {
     while (1) switch (context.prev = context.next) {
     case 0:
       console.log("before");
@@ -2912,7 +3037,7 @@ function attempt(block) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 
 
@@ -2940,7 +3065,7 @@ function attempt(block) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
 
@@ -2968,7 +3093,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -2996,7 +3121,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -3024,7 +3149,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -3052,7 +3177,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -3080,7 +3205,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -3108,7 +3233,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -3136,7 +3261,7 @@ while (true) {
           </section>
 
           <section data-transition="none">
-            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime/dev.js" target="_blank">runtime/dev.js</a>)</h3>
+            <h3>Exception dispatch (<a href="https://github.com/facebook/regenerator/blob/master/runtime.js" target="_blank">runtime.js</a>)</h3>
             <pre class="small" data-language="javascript">
 while (true) {
   if (state === GenStateSuspendedYield) {
@@ -3185,8 +3310,9 @@ async function chainAnimations(elem, animations) {
   for (var i = 0; i < animations.length; ++i)
     ret = await animations[i](elem);
   return ret;
-}
+}</pre>
 
+          <pre class="big fragment" data-language="javascript">
 chainAnimations($("#card"), [
   flip(100), slide(200), ...
 ]).then(function() {
@@ -3198,7 +3324,7 @@ chainAnimations($("#card"), [
           <pre class="small" data-language="javascript">
 function chainAnimations(elem, animations) {
   var ret, i;
-  return wrapGenerator.async(function(context) {
+  return regeneratorRuntime.async(function(context) {
     while (1) switch (context.next) {
     case 0:
       ret = null;
@@ -3228,9 +3354,9 @@ function chainAnimations(elem, animations) {
 
         <section id="async-codegen">
           <pre class="small" data-language="javascript">
-wrapGenerator.async = function(innerFn, self, tryList) {
+regeneratorRuntime.async = function(innerFn, self, tryList) {
   return new Promise(function(resolve, reject) {
-    var generator = wrapGenerator(innerFn, self, tryList);
+    var generator = regeneratorRuntime.wrap(innerFn, self, tryList);
     var callNext = step.bind(generator.next);
     var callThrow = step.bind(generator.throw);
 
@@ -3256,10 +3382,14 @@ wrapGenerator.async = function(innerFn, self, tryList) {
 
         <section>
           <h2>
-            Already implemented in<br>
-            <a href="https://github.com/facebook/regenerator/pull/101"
+            Already implemented<br>
+            by <a href="https://github.com/facebook/regenerator/pull/101"
                target="_blank">this pull request</a>.
           </h2>
+          <br>
+          <h3 class="fragment">
+            (Merged last week!)
+          </h3>
         </section>
 
         <section>

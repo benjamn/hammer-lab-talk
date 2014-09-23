@@ -93,6 +93,10 @@ img.interstitial {
   top: -25px;
 }
 
+.reveal section img#yield_ahead {
+  max-height: 700px;
+}
+
 .reveal section .thanks h2 {
   color: white;
   position: absolute;
